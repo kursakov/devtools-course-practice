@@ -36,6 +36,6 @@ script:
 after_success:
   # Push coverage info on coveralls.io
   - if [ "${coverage}" = "ON" ]; then
-         coveralls --exclude 3rdparty -E ".*\.cpp" --extension cxx --root ../
-          --build-root ../devtools_build;
+         coveralls --exclude 3rdparty -E ".*\.cpp" --gcov /usr/bin/gcov-4.8 --extension cxx
+         --build-root ../devtools_build;
     fi
