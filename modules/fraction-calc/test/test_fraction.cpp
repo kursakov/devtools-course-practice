@@ -55,6 +55,33 @@ TEST(FractionTest, Can_Create_Via_Copying) {
     EXPECT_EQ(expected_z, z);
 }
 
+TEST(FractionTest, Can_Create_With_Negative_Numerator) {
+    // Arrange & Act
+    Fraction z(-10, 6);
+
+    // Assert
+    EXPECT_EQ(z.getNum(), -5);
+    EXPECT_EQ(z.getDenom(), 3);
+}
+
+TEST(FractionTest, Can_Create_With_Negative_Denominator) {
+    // Arrange & Act
+    Fraction z(10, -6);
+
+    // Assert
+    EXPECT_EQ(z.getNum(), -5);
+    EXPECT_EQ(z.getDenom(), 3);
+}
+
+TEST(FractionTest, Can_Create_With_Negative_Numerator_And_Denominator) {
+    // Arrange & Act
+    Fraction z(-5, -6);
+
+    // Assert
+    EXPECT_EQ(z.getNum(), 5);
+    EXPECT_EQ(z.getDenom(), 6);
+}
+
 TEST(FractionTest, Can_Set_Numerator) {
     // Arrange
     Fraction z;

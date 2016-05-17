@@ -1,4 +1,4 @@
-// Copyright 2016 Muminov Ruslan
+// Copyright 2016 Kursakov Evgeny
 
 #include <gtest/gtest.h>
 
@@ -83,6 +83,17 @@ TEST_F(FractionCalculatorTest, Can_Add_Fractions) {
     Assert("5/8");
 }
 
+TEST_F(FractionCalculatorTest, Can_Diff_Fractions) {
+    // Arrange
+    vector<string> args = {"1/4", "-",  "3/8"};
+
+    // Act
+    Act(args);
+
+    // Assert
+    Assert("-1/8");
+}
+
 TEST_F(FractionCalculatorTest, Can_Multiply_Fractions) {
     // Arrange
     vector<string> args = {"11/3", "*",  "3/2"};
@@ -114,4 +125,37 @@ TEST_F(FractionCalculatorTest, Can_Pass_Fraction_As_Integer) {
 
     // Assert
     Assert("5/2");
+}
+
+TEST_F(FractionCalculatorTest, Can_Detect_Wrong_Number_Format) {
+    vector<string> args = {"1/2/3", "+", "12"};
+
+    Act(args);
+
+    Assert("Wrong number format!.*");
+}
+
+TEST_F(FractionCalculatorTest, Can_Detect_Wrong_Operation_Format) {
+    vector<string> args = {"1/2", "#test", "1/2"};
+
+    Act(args);
+
+    Assert("Wrong operation format!.*");
+}
+
+TEST_F(FractionCalculatorTest, Can_Detect_Divide_By_Zero) {
+    vector<string> args = {"1/0", "+", "1/2"};
+
+    Act(args);
+
+    Assert("Can't divide by zero.*");
+}
+
+
+TEST_F(FractionCalculatorTest, Can_Add_Negative_Fractions) {
+    vector<string> args = {"-1/2", "+", "-1/2"};
+
+    Act(args);
+
+    Assert("-1/1");
 }
