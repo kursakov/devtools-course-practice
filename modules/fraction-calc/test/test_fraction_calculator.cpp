@@ -1,3 +1,5 @@
+// Copyright 2016 Kursakov Evgeny
+
 #include <gtest/gtest.h>
 
 #include <string>
