@@ -1,4 +1,4 @@
-// Copyright 2016 Muminov Ruslan
+// Copyright 2016 Kursakov Evgeny
 
 #include <stdlib.h>
 #include <stdio.h>
