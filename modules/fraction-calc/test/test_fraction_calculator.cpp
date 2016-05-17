@@ -122,7 +122,7 @@ TEST_F(FractionCalculatorTest, Can_Detect_Wrong_Operation_Format) {
     Assert("Wrong operation format!.*");
 }
 
-TEST_F(FractionCalculatorTest, Can_Detect_Divide_By_Zero) {
+TEST_F(FractionCalculatorTest, Can_Detect_Divide_By_Zero_In_Fraction) {
     vector<string> args = {"1/0", "+", "1/2"};
 
     Act(args);
@@ -130,6 +130,13 @@ TEST_F(FractionCalculatorTest, Can_Detect_Divide_By_Zero) {
     Assert("Can't divide by zero.*");
 }
 
+TEST_F(FractionCalculatorTest, Can_Detect_Divide_By_Zero) {
+    vector<string> args = {"1/5", "/", "0"};
+
+    Act(args);
+
+    Assert("Can't divide by zero.*");
+}
 
 TEST_F(FractionCalculatorTest, Can_Add_Negative_Fractions) {
     vector<string> args = {"-1/2", "+", "-1/2"};
