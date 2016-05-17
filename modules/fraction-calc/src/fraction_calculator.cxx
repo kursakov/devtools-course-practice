@@ -6,9 +6,9 @@
 #include <string>
 #include <sstream>
 
-Fraction parseFraction(std::string arg);
-int parseInt(std::string arg);
-char parseOperation(const char *arg);
+Fraction parseFraction(const std::string &arg);
+int parseInt(const std::string &arg);
+char parseOperation(const std::string &arg);
 
 FractionCalculator::FractionCalculator() : message_("") { }
 
@@ -82,7 +82,7 @@ void FractionCalculator::help(const char *appName, const char *message) {
             "and where <frac*> is integer or pair of integer separated by '/'.";
 }
 
-Fraction parseFraction(std::string arg) {
+Fraction parseFraction(const std::string &arg) {
     size_t separatorPos = arg.find('/');
 
     if (separatorPos == std::string::npos) {
@@ -93,7 +93,7 @@ Fraction parseFraction(std::string arg) {
                     parseInt(arg.substr(separatorPos + 1)));
 }
 
-int parseInt(std::string arg) {
+int parseInt(const std::string &arg) {
     char *end;
     int value = static_cast<int>(strtol(arg.c_str(), &end, 10));
 
@@ -104,15 +104,15 @@ int parseInt(std::string arg) {
     return value;
 }
 
-char parseOperation(const char *arg) {
+char parseOperation(const std::string &arg) {
     char op;
-    if (strcmp(arg, "+") == 0) {
+    if (arg == "+") {
         op = '+';
-    } else if (strcmp(arg, "-") == 0) {
+    } else if (arg == "-") {
         op = '-';
-    } else if (strcmp(arg, "*") == 0) {
+    } else if (arg == "*") {
         op = '*';
-    } else if (strcmp(arg, "/") == 0) {
+    } else if (arg == "/") {
         op = '/';
     } else {
         throw std::string("Wrong operation format!");
