@@ -5,6 +5,7 @@
 enable_testing()
 
 set(prefix "${MODULE}")
+
 add_test(
     NAME ${prefix}_can_Run
     COMMAND ${APPLICATION}
@@ -22,53 +23,53 @@ add_test(
     COMMAND ${APPLICATION} 1
 )
 set_tests_properties (${prefix}_can_Check_Number_Of_Arguments
-  PROPERTIES PASS_REGULAR_EXPRESSION "ERROR: Should be 5 arguments.")
+  PROPERTIES PASS_REGULAR_EXPRESSION "ERROR: Should be 3 arguments.")
 
 add_test(
     NAME ${prefix}_can_Detect_Wrong_Number_Format
-    COMMAND ${APPLICATION} 1 ip 2 3 +
+    COMMAND ${APPLICATION} te1d + 3
 )
 set_tests_properties (${prefix}_can_Detect_Wrong_Number_Format
   PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number format!")
 
 add_test(
     NAME ${prefix}_can_Detect_Wrong_Operation_Format
-    COMMAND ${APPLICATION} 1 1 2 3 +trash
+    COMMAND ${APPLICATION} 1/2 d2d 2/3
 )
 set_tests_properties (${prefix}_can_Detect_Wrong_Operation_Format
   PROPERTIES PASS_REGULAR_EXPRESSION "Wrong operation format!")
 
 add_test(
-    NAME ${prefix}_can_Add_Complexs
-    COMMAND ${APPLICATION} 2.5 4.5 1.0 4.5 +
+    NAME ${prefix}_can_Add_Fractions
+    COMMAND ${APPLICATION} 6/7 + 1
 )
-set_tests_properties (${prefix}_can_Add_Complexs
-  PROPERTIES PASS_REGULAR_EXPRESSION "Real = 3.5 Imaginary = 9")
+set_tests_properties (${prefix}_can_Add_Fractions
+  PROPERTIES PASS_REGULAR_EXPRESSION "13/7")
 
 add_test(
-    NAME ${prefix}_can_Diff_Complexs
-    COMMAND ${APPLICATION} -17 0 15 -3.5 -
+    NAME ${prefix}_can_Diff_Fractions
+    COMMAND ${APPLICATION} 3/2 - 2/5
 )
-set_tests_properties (${prefix}_can_Diff_Complexs
-  PROPERTIES PASS_REGULAR_EXPRESSION "Real = -32 Imaginary = 3.5")
+set_tests_properties (${prefix}_can_Diff_Fractions
+  PROPERTIES PASS_REGULAR_EXPRESSION "11/10")
 
 add_test(
-    NAME ${prefix}_can_Mult_Complexs
-    COMMAND ${APPLICATION} 13 -2 4.6 7.3 *
+    NAME ${prefix}_can_Mult_Fractions
+    COMMAND ${APPLICATION} -17/2 * -3/5
 )
-set_tests_properties (${prefix}_can_Mult_Complexs
-  PROPERTIES PASS_REGULAR_EXPRESSION "Real = 74.4 Imaginary = 85.7")
+set_tests_properties (${prefix}_can_Mult_Fractions
+  PROPERTIES PASS_REGULAR_EXPRESSION "51/10")
 
 add_test(
-    NAME ${prefix}_can_Divide_Complexs
-    COMMAND ${APPLICATION} 27 30 15 20 /
+    NAME ${prefix}_can_Divide_Fractions
+    COMMAND ${APPLICATION} 8/3 / 2/5
 )
-set_tests_properties (${prefix}_can_Divide_Complexs
-  PROPERTIES PASS_REGULAR_EXPRESSION "Real = 1.608 Imaginary = -0.144")
+set_tests_properties (${prefix}_can_Divide_Fractions
+  PROPERTIES PASS_REGULAR_EXPRESSION "20/3")
 
 add_test(
     NAME ${prefix}_can_Detect_Divide_By_Zero
-    COMMAND ${APPLICATION} 27 30 0 0 /
+    COMMAND ${APPLICATION} 12/5 / 0
 )
 set_tests_properties (${prefix}_can_Detect_Divide_By_Zero
   PROPERTIES PASS_REGULAR_EXPRESSION "Can't divide by zero")
