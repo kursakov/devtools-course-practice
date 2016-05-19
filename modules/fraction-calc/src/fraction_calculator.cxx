@@ -5,6 +5,7 @@
 
 #include <string>
 #include <sstream>
+#include <stdexcept>
 
 Fraction parseFraction(const std::string &arg);
 int parseInt(const std::string &arg);

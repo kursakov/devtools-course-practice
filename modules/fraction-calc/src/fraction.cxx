@@ -4,6 +4,7 @@
 
 #include <cstdlib>
 #include <string>
+#include <stdexcept>
 
 Fraction::Fraction() : numerator_(0), denominator_(1) { }
 
