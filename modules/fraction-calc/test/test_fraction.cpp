@@ -187,7 +187,7 @@ TEST(FractionTest, Do_Throw_When_Division_By_Zero) {
     Fraction z2(26, 14);
 
     // Act & Assert
-    EXPECT_THROW(z2 / z1, std::string);
+    EXPECT_THROW(z2 / z1, std::invalid_argument);
 }
 
 TEST(FractionTest, Number_Is_Equal_To_Itself) {

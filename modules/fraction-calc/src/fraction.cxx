@@ -9,7 +9,7 @@ Fraction::Fraction() : numerator_(0), denominator_(1) { }
 
 Fraction::Fraction(int numerator, int denominator) {
     if (denominator == 0)
-        throw std::string("Can't divide by zero");
+        throw std::invalid_argument("Can't divide by zero");
     numerator_ = numerator;
     denominator_ = denominator;
     this->reduction();
@@ -38,7 +38,7 @@ void Fraction::setNum(int numerator) {
 
 void Fraction::setDenom(int denominator) {
     if (denominator == 0)
-        throw std::string("Can't divide by zero");
+        throw std::invalid_argument("Can't divide by zero");
     denominator_ = denominator;
 }
 
@@ -77,7 +77,7 @@ Fraction Fraction::operator/(const Fraction &z) const {
     Fraction division;
 
     if (equalsZero(z))
-        throw std::string("Can't divide by zero");
+        throw std::invalid_argument("Can't divide by zero");
     division.setNum(this->getNum() * z.getDenom());
     division.setDenom(this->getDenom() * z.getNum());
     division.reduction();

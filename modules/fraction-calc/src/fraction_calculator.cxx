@@ -25,8 +25,8 @@ std::string FractionCalculator::operator()(int argc, const char **argv) {
         fraction1 = parseFraction(argv[1]);
         operation = parseOperation(argv[2]);
         fraction2 = parseFraction(argv[3]);
-    } catch (std::string str) {
-        return str;
+    } catch (std::invalid_argument e) {
+        return e.what();
     }
 
     Fraction result;
@@ -45,8 +45,8 @@ std::string FractionCalculator::operator()(int argc, const char **argv) {
                 result = fraction1 / fraction2;
                 break;
         }
-    } catch (std::string str) {
-        return str;
+    } catch (std::invalid_argument e) {
+        return e.what();
     }
 
     std::ostringstream stream;
@@ -98,7 +98,7 @@ int parseInt(const std::string &arg) {
     int value = static_cast<int>(strtol(arg.c_str(), &end, 10));
 
     if (end[0]) {
-        throw std::string("Wrong number format!");
+        throw std::invalid_argument("Wrong number format!");
     }
 
     return value;
@@ -115,7 +115,7 @@ char parseOperation(const std::string &arg) {
     } else if (arg == "/") {
         op = '/';
     } else {
-        throw std::string("Wrong operation format!");
+        throw std::invalid_argument("Wrong operation format!");
     }
     return op;
 }
