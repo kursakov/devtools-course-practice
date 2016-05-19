@@ -3,6 +3,7 @@
 #include <gtest/gtest.h>
 
 #include <string>
+#include <stdexcept>
 
 #include "include/fraction.h"
 
