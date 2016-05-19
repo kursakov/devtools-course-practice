@@ -130,6 +130,22 @@ TEST_F(FractionCalculatorTest, Can_Detect_Divide_By_Zero_In_Fraction) {
     Assert("Can't divide by zero.*");
 }
 
+TEST_F(FractionCalculatorTest, Can_Detect_Zero_Divide_Zero_In_Fraction) {
+    vector<string> args = {"0/0", "+", "1/2"};
+
+    Act(args);
+
+    Assert("Can't divide by zero.*");
+}
+
+TEST_F(FractionCalculatorTest, Can_Divide_Zero_To_Number_In_Fraction) {
+    vector<string> args = {"0/5", "+", "1/2"};
+
+    Act(args);
+
+    Assert("1/2");
+}
+
 TEST_F(FractionCalculatorTest, Can_Detect_Divide_By_Zero) {
     vector<string> args = {"1/5", "/", "0"};
 

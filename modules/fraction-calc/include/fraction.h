@@ -1,4 +1,4 @@
-// Copyright 2016 Muminov_Ruslan
+// Copyright 2016 Muminov Ruslan, Kursakov Evgeny
 
 #ifndef MODULES_FRACTION_CALC_INCLUDE_FRACTION_H_
 #define MODULES_FRACTION_CALC_INCLUDE_FRACTION_H_

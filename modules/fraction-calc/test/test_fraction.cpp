@@ -1,4 +1,4 @@
-// Copyright 2016 Muminov Ruslan
+// Copyright 2016 Muminov Ruslan, Kursakov Evgeny
 
 #include <gtest/gtest.h>
 
@@ -73,6 +73,15 @@ TEST(FractionTest, Can_Create_With_Negative_Denominator) {
     EXPECT_EQ(z.getDenom(), 3);
 }
 
+TEST(FractionTest, Can_Create_With_Zero_Numerator) {
+    // Arrange & Act
+    Fraction z(0, 1);
+
+    // Assert
+    EXPECT_EQ(z.getNum(), 0);
+    EXPECT_EQ(z.getDenom(), 1);
+}
+
 TEST(FractionTest, Can_Create_With_Negative_Numerator_And_Denominator) {
     // Arrange & Act
     Fraction z(-5, -6);
@@ -116,6 +125,19 @@ TEST(FractionTest, Can_Add_Fraction) {
 
     // Assert
     Fraction expected_z(1, 7);
+    EXPECT_EQ(expected_z, z);
+}
+
+TEST(FractionTest, Can_Add_Negative_Fractions) {
+    // Arrange
+    Fraction z1(-3, 5);
+    Fraction z2(-1, 3);
+
+    // Arrange
+    Fraction z = z1 + z2;
+
+    // Assert
+    Fraction expected_z(-14, 15);
     EXPECT_EQ(expected_z, z);
 }
 
@@ -191,5 +213,5 @@ TEST(FractionTest, Different_Numbers_Not_Equal) {
     Fraction z2(1, 8);
 
     // Act & Assert
-    EXPECT_TRUE(z1 != z2);
+    EXPECT_NE(z1, z2);
 }

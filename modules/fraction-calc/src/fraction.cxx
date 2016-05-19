@@ -1,4 +1,4 @@
-// Copyright 2016 Muminov_Ruslan
+// Copyright 2016 Muminov Ruslan, Kursakov Evgeny
 
 #include "include/fraction.h"
 
